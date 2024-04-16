@@ -1,0 +1,76 @@
+<div class="login">
+  <div class="card">
+    <div class="fix">
+      <h1 class="title">
+        Tecnologia para o seu supermercado ter mais resultados!
+      </h1>
+
+      <div class="list">
+        <div class="items">
+          <ul>
+            <li>Aumento da Produtividade</li>
+            <li>Segurança de Dados</li>
+            <li>Organização</li>
+            <li>Controle de Estoque</li>
+            <li>Contole Financeiro e Fiscal</li>
+            <li>Auxilio para Tomadas de Decisões</li>
+          </ul>
+        </div>
+
+        <div class="img">
+          <img
+            src="assets/images/login_carrinho.png"
+            width="180"
+            alt="carrinho"
+          />
+        </div>
+      </div>
+    </div>
+
+    <mat-divider class="divider" [vertical]="true"></mat-divider>
+
+
+    <form class="form">
+      <section class="section">
+        <div class="img">
+          <img src="assets/images/logo_vr.svg" alt="logo" />
+        </div>
+
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" />
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-slide-toggle
+          class="toggle-align-left"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled"
+        >
+          Lembrar meu usuário!
+        </mat-slide-toggle>
+        <div class="button-row">
+          <button mat-flat-button color="primary">Entrar</button>
+        </div>
+      </section>
+    </form>
+  </div>
+  <div>
+    <img src="assets/images/logo_vr_com_assinatura.svg" alt="logo" />
+  </div>
+</div>

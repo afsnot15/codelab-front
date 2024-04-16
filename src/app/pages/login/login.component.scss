@@ -1,0 +1,101 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 40%;
+}
+
+.card {
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  border-radius: 2rem;
+  text-align: center;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  min-width: 40%;
+}
+
+.title {
+  padding: 2.0rem;
+  text-align: left;
+  color: #e86800;
+  font-size: 2.5rem;
+}
+
+.separator{
+  width: 50%;
+}
+
+.img {
+  display: flex;
+  margin: 2rem;
+  justify-content: center;
+
+}
+
+.list {
+  text-align: left;
+  display: flex;
+
+  .items {
+
+    li {
+      font-family: arial;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.full-width, form {
+  width: 100%;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.button-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+
+  button {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.disabled {
+  display: inline-block;
+}
+
+.fix, form {
+  flex: 1;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  margin: 1rem;
+}
+
+.divider {
+  height: 27rem;
+  margin: auto 0;
+}
+
+.toggle-align-left {
+  align-self: flex-start;
+}
