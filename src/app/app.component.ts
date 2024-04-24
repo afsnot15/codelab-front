@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { LoginModule } from './pages/login/login.module';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'cl-root',
   standalone: true,
-  imports: [LoginModule],
+  imports: [HomeComponent, LayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
