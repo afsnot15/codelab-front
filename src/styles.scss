@@ -75,7 +75,16 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  color: var(--color-default);
+}
+
+:root {
+  --color-default: #1f1f1f;
+  --color-primary: #e86800;
+  --color-gray-50: #eceff1;
+  --color-gray-600: #546e7a;
 }
