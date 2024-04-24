@@ -1,101 +1,90 @@
-.login {
+.login-page {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  min-width: 40%;
-}
+  justify-content: cnter;
 
-.card {
-  margin-top: 8rem;
-  margin-bottom: 5rem;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
-  border-radius: 2rem;
-  text-align: center;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-  min-width: 40%;
-}
+  .login-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 70%;
+    padding: 3rem 2rem;
+    box-shadow: 0.5rem 0.5rem 1rem #0000003d;
+    border-radius: 0.8rem;
 
-.title {
-  padding: 2.0rem;
-  text-align: left;
-  color: #e86800;
-  font-size: 2.5rem;
-}
 
-.separator{
-  width: 50%;
-}
+  .left-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 45%;
+      padding: 0 2rem;
+      border-right: 0.0133rem solid rgba(0, 0, 0, 0.3);
 
-.img {
-  display: flex;
-  margin: 2rem;
-  justify-content: center;
+      h1 {
+        color: var(--color-primary);
+        font-size: 2.2rem;
+      }
 
-}
+      .left-container-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-.list {
-  text-align: left;
-  display: flex;
+        ul {
+          transform: translateX(-25px);
 
-  .items {
+          li {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: lighter;
+          }
+        }
 
-    li {
-      font-family: arial;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+        img {
+          width: 11rem;
+          margin-left: auto;
+        }
+      }
+    }
+
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+
+
+    .login-form {
+      width: 100%;
+
+      .form-field {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+
+    img {
+      width: 7.5rem;
+      margin-bottom: auto;
     }
   }
 }
 
-.full-width, form {
-  width: 100%;
-}
-
-.right-align {
-  text-align: right;
-}
-
-.button-row {
-  align-self: stretch;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-
-  button {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+  .logo-assinatura {
+    width: 13rem;
+    margin-top: 2.5rem;
   }
-}
-
-.disabled {
-  display: inline-block;
-}
-
-.fix, form {
-  flex: 1;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-  margin: 1rem;
-}
-
-.divider {
-  height: 27rem;
-  margin: auto 0;
-}
-
-.toggle-align-left {
-  align-self: flex-start;
 }
