@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
+
+interface IMenuItem {
+  label: string;
+  icon: string;
+  path: string;
+}
 
 @Component({
   selector: 'cl-menu',
@@ -10,5 +17,14 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  menuItems = [{ icon: 'home', label: 'Home', link: '/' }];
+  constructor(private readonly _router: Router) {}
+
+  menuItems: IMenuItem[] = [
+    { label: 'Home', icon: 'home', path: 'home' },
+    { label: 'Usuário', icon: 'person', path: 'usuario' },
+  ];
+
+  handleNavigation(path: string) {
+    this._router.navigateByUrl(path);
+  }
 }

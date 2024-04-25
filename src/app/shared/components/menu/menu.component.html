@@ -1,8 +1,7 @@
 <aside>
-<div *ngFor="let menuItem of menuItems" class="menu-item">
-  <mat-icon [fontIcon]="menuItem.icon"></mat-icon>
-  <span>{{menuItem.label}}</span>
-
-</div>
-
+  <div *ngFor="let menuItem of menuItems" class="menu-item"
+  (click)="handleNavigation(menuItem.path)">
+    <mat-icon [fontIcon]="menuItem.icon"></mat-icon>
+    <span>{{menuItem.label}}</span>
+  </div>
 </aside>
