@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
+import { HomeRoutes } from '../shared/enums/routes/home-route.enum';
 
 @Component({
   selector: 'cl-not-found',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
+  constructor(private readonly _router: Router) {}
 
+  goToHome() {
+    this._router.navigateByUrl(HomeRoutes.ROOT);
+  }
 }
