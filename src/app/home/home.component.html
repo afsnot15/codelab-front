@@ -1,1 +1,35 @@
-<p>Home works</p>
+<div class="home-page">
+  <div class="home-card">
+    <h1>Cadastro</h1>
+    <form class="login-form">
+      <mat-form-field type="tel" class="form-field">
+        <mat-label>Telefone</mat-label>
+        <input matInput mask="(00)0 0000-0000" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field ">
+        <mat-label>CPF</mat-label>
+        <input matInput mask="000.000.000-00" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>CNPJ</mat-label>
+        <input matInput mask="00.000.000/0000-00" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Monetário</mat-label>
+        <input matInput mask="0*.00" />
+      </mat-form-field>
+
+
+      <mat-form-field >
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker">
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

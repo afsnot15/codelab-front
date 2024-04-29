@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   codelab-front:
+    container_name: codelab-front
     build:
       context: .
       dockerfile: Dockerfile
