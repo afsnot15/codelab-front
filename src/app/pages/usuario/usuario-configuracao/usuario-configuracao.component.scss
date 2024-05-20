@@ -1,0 +1,26 @@
+.content {
+  display: flex;
+  flex-direction: column;
+
+  .configuracao {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      color: var(--color-primary);
+    }
+
+    .separator {
+      margin-left: 1rem;
+      flex-grow: 1;
+      height: 1.0px;
+      background-color: var(--color-gray-600);
+    }
+
+    .configuracao-item {
+      display: flex;
+      flex-direction: column;
+
+    }
+  }
+}

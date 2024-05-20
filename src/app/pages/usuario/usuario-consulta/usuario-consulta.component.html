@@ -1,11 +1,10 @@
-<cl-page-layout>
-
+<cl-page-layout title="Consulta de Usuário">
   <ng-container leftActions>
-    <cl-back-action></cl-back-action>
+    <cl-back-action [backRoute]="backRoute"></cl-back-action>
     <cl-add-action></cl-add-action>
   </ng-container>
 
-
-
-  <span>Usuario Consulta</span>
+  <ng-container content>
+    <span>Usuario Consulta</span>
+  </ng-container>
 </cl-page-layout>

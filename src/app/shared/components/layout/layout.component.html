@@ -2,11 +2,14 @@
   <cl-header></cl-header>
 
   <div class="content-container">
-    <cl-menu></cl-menu>
+    <cl-menu *ngIf="!menuDireita"></cl-menu>
 
     <div class="content">
       <ng-content></ng-content>
     </div>
+
+    <cl-menu *ngIf="menuDireita"></cl-menu>
+
   </div>
 
   <cl-footer></cl-footer>

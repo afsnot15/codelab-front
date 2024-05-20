@@ -1,5 +1,6 @@
-export enum UsuarioRoutes {
+export enum EUsuarioRoutes {
   ROOT = 'usuario',
   CADASTRO = 'cadastro',
-  CONSULTA = 'consulta'
+  CONSULTA = 'consulta',
+  CONFIGURACAO = 'configuracao'
 }

@@ -1,23 +1,28 @@
 import { Routes } from '@angular/router';
 import { UsuarioConsultaComponent } from './usuario-consulta/usuario-consulta.component';
 import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
-import { UsuarioRoutes } from '../../shared/enums/routes/usuario-route.enum';
+import { EUsuarioRoutes } from '../../shared/enums/routes/usuario-route.enum';
+import { UsuarioConfiguracaoComponent } from './usuario-configuracao/usuario-configuracao.component';
 
 export const usuarioRoutes: Routes = [
   {
-    path: UsuarioRoutes.ROOT,
+    path: EUsuarioRoutes.ROOT,
     children: [
       {
-        path: UsuarioRoutes.CADASTRO,
+        path: EUsuarioRoutes.CADASTRO,
         component: UsuarioCadastroComponent,
       },
       {
-        path: UsuarioRoutes.CONSULTA,
+        path: EUsuarioRoutes.CONSULTA,
         component: UsuarioConsultaComponent,
       },
       {
+        path: EUsuarioRoutes.CONFIGURACAO,
+        component: UsuarioConfiguracaoComponent,
+      },
+      {
         path: '',
-        redirectTo: UsuarioRoutes.CONSULTA,
+        redirectTo: EUsuarioRoutes.CONSULTA,
         pathMatch: 'full',
       },
     ],

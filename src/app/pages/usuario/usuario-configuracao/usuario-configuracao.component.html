@@ -1,0 +1,40 @@
+<cl-page-layout title="Preferências de Usuário">
+  <ng-container leftActions>
+    <cl-back-action [backRoute]="backRoute"></cl-back-action>
+  </ng-container>
+
+  <ng-container rightActions>
+    <cl-save-action (click)="save()"></cl-save-action>
+  </ng-container>
+  <ng-container content>
+    <div class="content">
+      <div class="configuracao">
+        <h3>Menu</h3>
+        <div class="separator"></div>
+      </div>
+
+      <mat-slide-toggle
+        class="toggle-align-left"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled"
+      >
+        Utilizar Menu a Direita
+      </mat-slide-toggle>
+
+      <div class="configuracao">
+        <h3>Tema</h3>
+        <div class="separator"></div>
+      </div>
+
+      <mat-slide-toggle
+        class="toggle-align-left"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled"
+      >
+        Tema Black
+      </mat-slide-toggle>
+    </div>
+  </ng-container>
+</cl-page-layout>

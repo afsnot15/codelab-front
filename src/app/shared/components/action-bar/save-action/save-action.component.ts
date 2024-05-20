@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -9,5 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './save-action.component.scss'
 })
 export class SaveActionComponent {
+  @Output() saveEmitter = new EventEmitter<void>();
 
+  save(){
+    this.saveEmitter.emit();
+  }
 }

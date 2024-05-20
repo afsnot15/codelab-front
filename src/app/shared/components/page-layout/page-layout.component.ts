@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActionBarComponent } from '../action-bar/action-bar.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,5 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './page-layout.component.scss'
 })
 export class PageLayoutComponent {
+  @Input({required: true}) title!: string;
 
 }

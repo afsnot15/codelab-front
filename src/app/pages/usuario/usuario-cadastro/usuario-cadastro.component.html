@@ -1,15 +1,15 @@
-<cl-page-layout>
-
+<cl-page-layout title="Cadastro de Usuário">
   <ng-container leftActions>
-    <cl-back-action></cl-back-action>
+    <cl-back-action [backRoute]="navigateToBack()"></cl-back-action>
     <cl-add-action></cl-add-action>
   </ng-container>
 
   <ng-container rightActions>
-
-    <cl-save-action></cl-save-action>
-    <cl-save-add-action></cl-save-add-action>
+    <cl-save-action (click)="save()"></cl-save-action>
+    <cl-save-add-action (click)="saveAdd()"></cl-save-add-action>
   </ng-container>
 
-  <span>Usuario Cadastro</span>
+  <ng-container content>
+    <span>Usuario Cadastro</span>
+  </ng-container>
 </cl-page-layout>

@@ -2,8 +2,9 @@ version: '3.5'
 
 services:
   codelab-front:
+    container_name: codelab-front
     build:
-      context: .
+      context: ./.docker
       dockerfile: Dockerfile
     ports:
       - "4200:4200"

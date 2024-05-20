@@ -1,3 +1,3 @@
-export enum HomeRoutes {
+export enum EHomeRoutes {
   ROOT = 'home'
 }

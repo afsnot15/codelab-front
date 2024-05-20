@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { HomeRoutes } from '../../enums/routes/home-route.enum';
-import { UsuarioRoutes } from '../../enums/routes/usuario-route.enum';
+import { EHomeRoutes } from '../../enums/routes/home-route.enum';
+import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
 
 interface IMenuItem {
   label: string;
@@ -22,8 +22,8 @@ export class MenuComponent {
   constructor(private readonly _router: Router) {}
 
   menuItems: IMenuItem[] = [
-    { label: 'Home', icon: 'home', path: HomeRoutes.ROOT },
-    { label: 'Usuário', icon: 'person', path: UsuarioRoutes.ROOT },
+    { label: 'Home', icon: 'home', path: EHomeRoutes.ROOT },
+    { label: 'Usuário', icon: 'person', path: EUsuarioRoutes.ROOT },
   ];
 
   handleNavigation(path: string) {

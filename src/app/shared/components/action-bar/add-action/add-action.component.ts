@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EUsuarioRoutes } from '../../../enums/routes/usuario-route.enum';
 
 @Component({
   selector: 'cl-add-action',
