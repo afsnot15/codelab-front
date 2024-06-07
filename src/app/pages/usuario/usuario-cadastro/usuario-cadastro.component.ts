@@ -7,6 +7,7 @@ import { SaveActionComponent } from '../../../shared/components/action-bar/save-
 import { SaveAddActionComponent } from '../../../shared/components/action-bar/save-add-action/save-add-action.component';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { EUsuarioRoutes } from '../../../shared/enums/routes/usuario-route.enum';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'cl-usuario-cadastro',
@@ -24,6 +25,13 @@ import { EUsuarioRoutes } from '../../../shared/enums/routes/usuario-route.enum'
   styleUrl: './usuario-cadastro.component.scss',
 })
 export class UsuarioCadastroComponent {
+  cadastroFormGroup = new FormGroup({
+    id: new FormControl({ value: null, disabled: true }),
+    nome: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    admin: new FormControl(false),
+  });
+
   saveAdd() {
     console.log('saveAdd');
   }
@@ -35,5 +43,4 @@ export class UsuarioCadastroComponent {
   navigateToBack() {
     return `${EUsuarioRoutes.ROOT}/${EUsuarioRoutes.CONSULTA}`;
   }
-
 }

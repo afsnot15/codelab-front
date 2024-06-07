@@ -1,28 +1,25 @@
 .page-card {
-  width: 90%;
-  padding: 1rem 1rem;
-  box-shadow: 0.5rem 0.5rem 1rem #0000003d;
-  border-radius: 0.8rem;
-  margin-left: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 1rem;
+  padding: 1rem 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem #0000003e;
 
   header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     h1 {
+      margin-right: 1rem;
       color: var(--color-primary);
-      font-size: 2.2rem;
-      position: relative;
+      font-size: 0.95rem;
+      white-space: nowrap;
     }
 
     .separator {
-      margin-left: 1rem;
-      flex-grow: 1;
-      height: 1.5px;
-      background-color: var(--color-gray-600);
+      flex: auto;
+      height: 1px;
+      border-bottom: 0.1px solid rgba(0, 0, 0, 0.3);
     }
   }
 }
