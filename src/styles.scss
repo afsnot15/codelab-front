@@ -45,7 +45,8 @@ $my-colors: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $codelab-front-primary: mat.define-palette($my-colors, 100, 50, 200);
-$codelab-front-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$codelab-front-accent: mat.define-palette($my-colors, A200, A100, A400);
+
 
 // The warn palette is optional (defaults to red).
 $codelab-front-warn: mat.define-palette(mat.$red-palette);
@@ -88,4 +89,8 @@ body {
   --color-gray-50: #eceff1;
   --color-gray-600: #546e7a;
   --color-secondary: #5e5e5e;
+}
+
+[disabled]{
+  cursor: not-allowed;
 }

@@ -26,6 +26,8 @@ import { FormatIdPipe } from '../../../shared/pipes/format-id.pipe';
 import { IUsuario, IUsuarioForm } from '../usuario.interface';
 import { UsuarioService } from '../usuario.service';
 import { FormFieldsListComponent } from './../../../shared/components/form-fields-list/form-fields-list.component';
+import { ProgressLoadingComponent } from '../../../shared/components/progress-loading/progress-loading.component';
+import { CommonModule } from '@angular/common';
 
 const actions = [BackActionComponent, AddActionComponent];
 const table = [MatTableModule, MatSortModule, MatPaginatorModule];
@@ -36,6 +38,8 @@ const imports = [
   ...pipes,
   PageLayoutComponent,
   FormFieldsListComponent,
+  ProgressLoadingComponent,
+  CommonModule,
 ];
 
 @Component({

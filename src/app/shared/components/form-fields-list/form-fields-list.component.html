@@ -1,37 +1,11 @@
-<form [formGroup]="form" class="form-fields">
+<div class="form-fields">
   <ng-container *ngFor="let field of fields">
-    <ng-container [ngSwitch]="field.type">
-      <div [class]="field.class" class="form-field" *ngSwitchCase="0">
-        <span class="field-label">
-          {{ field.label }}
-        </span>
+    <cl-form-field
+      [field]="field"
+      [form]="form"
+      [class]="field.class"
+    ></cl-form-field>
 
-        <mat-form-field>
-          <input
-            type="text"
-            matInput
-            [placeholder]="field.placeholder"
-            [formControlName]="field.formControlName"
-          />
-        </mat-form-field>
-      </div>
-
-      <div [class]="field.class" class="form-field" *ngSwitchCase="1">
-        <span class="field-label">
-          {{ field.label }}
-        </span>
-
-        <mat-form-field>
-          <mat-select [formControlName]="field.formControlName">
-            <mat-option
-              *ngFor="let option of field.options"
-              [value]="option.value"
-            >
-              {{ option.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </ng-container>
-  </ng-container>
-</form>
+    </ng-container
+  >
+</div>

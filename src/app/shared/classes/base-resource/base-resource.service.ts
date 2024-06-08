@@ -5,9 +5,9 @@ import { IFindAllResponse } from '../../interfaces/find-all-response.interface';
 import { filterSortPageData } from '../../helpers/table.helper';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export abstract class BaseResource<TData> {
+export abstract class BaseResourceService<TData> {
   abstract mockedData: TData[];
 
   findAll(
@@ -29,5 +29,9 @@ export abstract class BaseResource<TData> {
     });
   }
 
-  constructor() { }
+  create(payload: TData): Promise<TData> {
+    return Promise.resolve({ ...payload, id: 1 });
+  }
+
+  constructor() {}
 }

@@ -1,19 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, output } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IFormField } from '../../interfaces/form-field.interface';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Subject, debounceTime, takeUntil, tap } from 'rxjs';
+import { IFormField } from '../../interfaces/form-field.interface';
+import { FormFieldComponent } from '../form-field/form-field.component';
+import { CommonModule } from '@angular/common';
 
-const form = [ReactiveFormsModule, FormsModule]
-const components = [MatInputModule, MatFormFieldModule, MatSelectModule];
 
 @Component({
   selector: 'cl-form-fields-list',
   standalone: true,
-  imports: [...form, ...components, CommonModule]  ,
+  imports: [CommonModule, FormFieldComponent]  ,
   templateUrl: './form-fields-list.component.html',
   styleUrl: './form-fields-list.component.scss'
 })
@@ -27,7 +23,6 @@ export class FormFieldsListComponent {
   ngOnInit() {
     this.watchForm();
   }
-
 
   private watchForm(): void {
     this.form.valueChanges

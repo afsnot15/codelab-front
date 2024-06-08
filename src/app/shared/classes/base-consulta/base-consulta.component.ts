@@ -5,12 +5,12 @@ import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { getPaginatorIntl } from '../../helpers/paginator-intl.helper';
 import { IFormField } from '../../interfaces/form-field.interface';
-import { BaseResource } from '../base-resource/base-resource.service';
+import { BaseResourceService } from '../base-resource/base-resource.service';
 
 @Component({
   template: '',
 })
-export abstract class BaseConsultaComponent <TData>{
+export abstract class BaseConsultaComponent<TData> {
   @ViewChild(MatPaginator) paginatorEl!: MatPaginator;
 
   abstract displayedColumns: string[];
@@ -20,6 +20,8 @@ export abstract class BaseConsultaComponent <TData>{
   dataSource = new MatTableDataSource<TData>([]);
   sort: Sort = { active: 'id', direction: 'asc' };
   page: PageEvent = { pageIndex: 0, pageSize: 5, length: 0 };
+
+  loading = false;
 
   get filter() {
     return this.filterFormGroup.getRawValue();
@@ -34,16 +36,17 @@ export abstract class BaseConsultaComponent <TData>{
   }
 
   search() {
-    console.log('filter', this.filter);
+    this.loading = true;
+
     this._service
       .findAll(this.page, this.sort, this.filter)
       .then((response) => {
         this.dataSource.data = response.data;
         this.paginatorEl.length = response.count;
+      })
+      .finally(() => {
+        setTimeout(() => (this.loading = false), 2000);
       });
-
-      console.log(this.filter);
-      console.log(this.dataSource.data);
   }
 
   applySort(sort: Sort) {
@@ -56,5 +59,5 @@ export abstract class BaseConsultaComponent <TData>{
     this.search();
   }
 
-  constructor(private readonly _service: BaseResource<TData>) {}
+  constructor(private readonly _service: BaseResourceService<TData>) {}
 }

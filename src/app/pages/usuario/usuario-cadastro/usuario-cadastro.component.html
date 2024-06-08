@@ -5,10 +5,13 @@
 
   <ng-container rightActions>
     <cl-save-action (click)="save()"></cl-save-action>
-    <cl-save-add-action (click)="saveAdd()"></cl-save-add-action>
+    <cl-save-add-action (click)="save(true)"></cl-save-add-action>
   </ng-container>
 
   <ng-container content>
-    <span>Usuario Cadastro</span>
+      <cl-form-fields-list
+        [form]="cadastroFormGroup"
+        [fields]="cadastroFields"
+      ></cl-form-fields-list>
   </ng-container>
 </cl-page-layout>

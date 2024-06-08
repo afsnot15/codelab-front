@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BaseResource } from '../../shared/classes/base-resource/base-resource.service';
+import { BaseResourceService } from '../../shared/classes/base-resource/base-resource.service';
 import { IUsuario } from './usuario.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService extends BaseResource<IUsuario> {
+export class UsuarioService extends BaseResourceService<IUsuario> {
   mockedData: IUsuario[] = [
     {
       id: 1,
