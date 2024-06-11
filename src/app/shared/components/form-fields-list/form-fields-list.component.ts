@@ -3,13 +3,13 @@ import { FormGroup } from '@angular/forms';
 import { Subject, debounceTime, takeUntil, tap } from 'rxjs';
 import { IFormField } from '../../interfaces/form-field.interface';
 import { FormFieldComponent } from '../form-field/form-field.component';
-import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'cl-form-fields-list',
   standalone: true,
-  imports: [CommonModule, FormFieldComponent]  ,
+  imports: [FormFieldComponent]  ,
   templateUrl: './form-fields-list.component.html',
   styleUrl: './form-fields-list.component.scss'
 })

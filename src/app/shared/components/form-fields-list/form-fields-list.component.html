@@ -1,11 +1,9 @@
 <div class="form-fields">
-  <ng-container *ngFor="let field of fields">
+  @for (field of fields; track field) {
     <cl-form-field
       [field]="field"
       [form]="form"
       [class]="field.class"
     ></cl-form-field>
-
-    </ng-container
-  >
+  }
 </div>

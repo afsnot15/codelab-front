@@ -2,13 +2,17 @@
   <cl-header></cl-header>
 
   <div class="content-container">
-    <cl-menu *ngIf="!menuDireita"></cl-menu>
+    @if (!menuDireita) {
+      <cl-menu></cl-menu>
+    }
 
     <div class="content">
       <ng-content></ng-content>
     </div>
 
-    <cl-menu *ngIf="menuDireita"></cl-menu>
+    @if (menuDireita) {
+      <cl-menu></cl-menu>
+    }
 
   </div>
 
