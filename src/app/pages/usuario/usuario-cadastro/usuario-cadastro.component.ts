@@ -11,9 +11,7 @@ import { FormFieldsListComponent } from '../../../shared/components/form-fields-
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { EFieldType } from '../../../shared/enums/field-type.enum';
 import { EUsuarioRoutes } from '../../../shared/enums/routes/usuario-route.enum';
-import {
-  IFormField
-} from '../../../shared/interfaces/form-field.interface';
+import { IFormField } from '../../../shared/interfaces/form-field.interface';
 import { IUsuario } from '../usuario.interface';
 import { UsuarioService } from '../usuario.service';
 
@@ -33,7 +31,14 @@ import { UsuarioService } from '../usuario.service';
   templateUrl: './usuario-cadastro.component.html',
   styleUrl: './usuario-cadastro.component.scss',
 })
-export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario>{
+export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario> {
+  constructor(
+    private readonly _usuarioService: UsuarioService,
+    protected override readonly _injector: Injector,
+  ) {
+    super(_usuarioService, _injector);
+  }
+
   cadastroFormGroup = new FormGroup({
     id: new FormControl({ value: null, disabled: true }),
     nome: new FormControl(null, [Validators.required, Validators.minLength(4)]),
@@ -78,13 +83,5 @@ export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario>{
         placeholder: '',
       },
     ];
-  }
-
-  constructor(
-    protected readonly _usuarioService: UsuarioService,
-    protected readonly _injectorUsuario: Injector,
-  ) {
-    super(_usuarioService, _injectorUsuario);
-
   }
 }

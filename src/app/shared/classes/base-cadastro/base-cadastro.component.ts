@@ -4,15 +4,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IFormField } from '../../interfaces/form-field.interface';
 import { BaseResourceService } from '../base-resource/base-resource.service';
 import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
+import {
+  CanDeactivateComponent,
+  TCanDeactivate,
+} from '../../guards/pending-changes.guard';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
+import { Observable } from 'rxjs';
 
 @Component({
   template: '',
 })
 export abstract class BaseCadastroComponent<TData extends { id: number }>
-  implements OnInit
+  implements OnInit, CanDeactivateComponent
 {
   private readonly _router!: Router;
   private readonly _route!: ActivatedRoute;
+  private readonly _dialog!: MatDialog;
 
   abstract cadastroFormGroup: FormGroup;
   abstract cadastroFields: IFormField[];
@@ -25,6 +33,7 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   ) {
     this._router = this._injector.get(Router);
     this._route = this._injector.get(ActivatedRoute);
+    this._dialog = this._injector.get(MatDialog);
   }
 
   ngOnInit(): void {
@@ -91,7 +100,7 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   }
 
   protected actionsAfterUpdate(response: TData): void {
-    console.log(response);
+    this.cadastroFormGroup.markAsUntouched();
   }
 
   protected saveCadastro(addNew = false): void {
@@ -102,5 +111,21 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
         this._router.navigate([`../editar/${id}`], { relativeTo: this._route });
       }
     });
+  }
+
+  canDeactivate(): TCanDeactivate {
+    console.log('Chamada action');
+
+    if (!this.cadastroFormGroup.touched) return true;
+
+    const ref = this._dialog.open(ConfirmDialogComponent, {
+      disableClose: true,
+      data: {
+        titleText: 'Ações Pendentes',
+        contentText: 'Você deseja confirmar essa ação?',
+      },
+    });
+
+    return ref.afterClosed() as unknown as Observable<boolean>;
   }
 }

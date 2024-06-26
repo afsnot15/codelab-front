@@ -3,6 +3,7 @@ import { UsuarioConsultaComponent } from './usuario-consulta/usuario-consulta.co
 import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
 import { EUsuarioRoutes } from '../../shared/enums/routes/usuario-route.enum';
 import { UsuarioConfiguracaoComponent } from './usuario-configuracao/usuario-configuracao.component';
+import { pendingChangesGuard } from '../../shared/guards/pending-changes.guard';
 
 export const usuarioRoutes: Routes = [
   {
@@ -11,6 +12,7 @@ export const usuarioRoutes: Routes = [
       {
         path: EUsuarioRoutes.CADASTRO,
         component: UsuarioCadastroComponent,
+        canDeactivate: [pendingChangesGuard]
       },
       {
         path: EUsuarioRoutes.CONSULTA,
@@ -19,6 +21,7 @@ export const usuarioRoutes: Routes = [
       {
         path: 'editar/:id',
         component: UsuarioCadastroComponent,
+        canDeactivate: [pendingChangesGuard]
       },
       {
         path: EUsuarioRoutes.CONFIGURACAO,
