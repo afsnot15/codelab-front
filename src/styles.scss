@@ -47,7 +47,6 @@ $my-colors: (
 $codelab-front-primary: mat.define-palette($my-colors, 100, 50, 200);
 $codelab-front-accent: mat.define-palette($my-colors, A200, A100, A400);
 
-
 // The warn palette is optional (defaults to red).
 $codelab-front-warn: mat.define-palette(mat.$red-palette);
 
@@ -91,6 +90,17 @@ body {
   --color-secondary: #5e5e5e;
 }
 
-[disabled]{
+[disabled] {
   cursor: not-allowed;
+}
+
+.consulta-edit-icon {
+  cursor: pointer;
+  color: var(--color-secondary);
+  font-size: 20px;
+}
+
+.consulta-actions-container {
+  width: 30px;
+  text-align: center !important ;
 }

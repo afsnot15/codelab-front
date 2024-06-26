@@ -17,6 +17,10 @@ export const usuarioRoutes: Routes = [
         component: UsuarioConsultaComponent,
       },
       {
+        path: 'editar/:id',
+        component: UsuarioCadastroComponent,
+      },
+      {
         path: EUsuarioRoutes.CONFIGURACAO,
         component: UsuarioConfiguracaoComponent,
       },

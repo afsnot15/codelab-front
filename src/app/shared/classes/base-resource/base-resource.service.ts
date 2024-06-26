@@ -30,7 +30,17 @@ export abstract class BaseResourceService<TData> {
   }
 
   create(payload: TData): Promise<TData> {
-    return Promise.resolve({ ...payload, id: 1 });
+    return Promise.resolve(payload);
+  }
+
+  updateById(id: number, data: TData): Promise<TData> {
+    return Promise.resolve({ ...data, id });
+  }
+
+  findOneById(id: number): Promise<TData | undefined> {
+    const data = this.mockedData as (TData & { id: number })[];
+    const value = data.find((item) => item.id === id);
+    return Promise.resolve(value);
   }
 
   constructor() {}

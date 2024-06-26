@@ -40,10 +40,7 @@ export class FormFieldComponent {
   get label():string {
     const isRequired = !!this.control?.hasValidator(Validators.required);
 
-    console.log( `${this.field.label} ${isRequired ? '*' : ''}`)
-
     return `${this.field.label} ${isRequired ? '*' : ''}`
-
   }
 
   get control(): AbstractControl | null {

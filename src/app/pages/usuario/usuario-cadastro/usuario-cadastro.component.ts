@@ -36,7 +36,7 @@ import { UsuarioService } from '../usuario.service';
 export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario>{
   cadastroFormGroup = new FormGroup({
     id: new FormControl({ value: null, disabled: true }),
-    nome: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    nome: new FormControl(null, [Validators.required, Validators.minLength(4)]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     admin: new FormControl(false),
   });

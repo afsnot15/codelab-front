@@ -1,5 +1,7 @@
+import { MatIconModule } from '@angular/material/icon';
 import {
-  Component
+  Component,
+  Injector
 } from '@angular/core';
 import {
   FormControl,
@@ -40,6 +42,7 @@ const imports = [
   FormFieldsListComponent,
   ProgressLoadingComponent,
   CommonModule,
+  MatIconModule
 ];
 
 @Component({
@@ -52,8 +55,8 @@ const imports = [
 export class UsuarioConsultaComponent extends BaseConsultaComponent<IUsuario> {
   backRoute = EHomeRoutes.ROOT;
 
-  displayedColumns: string[] = ['id', 'nome', 'email', 'admin'];
-  fields = ['id', 'nome', 'email', 'admin'];
+  displayedColumns: string[] = ['id', 'nome', 'email', 'admin', 'acoes'];
+  fields = ['id', 'nome', 'email', 'admin', 'acoes'];
 
   adminOptions: ILabelValue[] = [
     {
@@ -110,7 +113,7 @@ export class UsuarioConsultaComponent extends BaseConsultaComponent<IUsuario> {
     admin: new FormControl(0),
   });
 
-  constructor(private _usuarioService: UsuarioService) {
-    super(_usuarioService);
+  constructor(private _usuarioService: UsuarioService,  protected readonly _injectorUsuario: Injector,) {
+    super(_usuarioService, _injectorUsuario);
   }
 }
