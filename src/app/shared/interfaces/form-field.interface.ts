@@ -2,7 +2,7 @@ import { EFieldType } from "../enums/field-type.enum";
 
 export interface ILabelValue {
   label: string;
-  value: number | boolean | string;
+  value: number | boolean | string | undefined;
 }
 
 

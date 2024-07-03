@@ -11,6 +11,12 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
 import { Observable } from 'rxjs';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   template: '',
@@ -21,6 +27,7 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   private readonly _router!: Router;
   private readonly _route!: ActivatedRoute;
   private readonly _dialog!: MatDialog;
+  private readonly _snackBar!: MatSnackBar
 
   abstract cadastroFormGroup: FormGroup;
   abstract cadastroFields: IFormField[];
@@ -34,6 +41,7 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     this._router = this._injector.get(Router);
     this._route = this._injector.get(ActivatedRoute);
     this._dialog = this._injector.get(MatDialog);
+    this._snackBar = this._injector.get(MatSnackBar);
   }
 
   ngOnInit(): void {
@@ -50,13 +58,13 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     this.idEdit = +id;
     console.log(this.idEdit);
 
-    this._service.findOneById(this.idEdit).then((response) => {
+    this._service.findOneById(this.idEdit).subscribe((response) => {
       if (!response) {
         this.navigateToCadastro();
         return;
       }
 
-      this.patchFormForEdit(response);
+      this.patchFormForEdit(response.data);
     });
   }
 
@@ -90,11 +98,13 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   }
 
   protected saveEditar(addNew = false): void {
-    this._service.updateById(this.idEdit, this.formValues).then((response) => {
+    this._service.updateById(this.idEdit, this.formValues).subscribe((response) => {
+      this.openSnackBar();
       if (addNew) {
+        this.cadastroFormGroup.markAsUntouched();
         this.navigateToCadastro();
       } else {
-        this.actionsAfterUpdate(response);
+        this.actionsAfterUpdate(response.data);
       }
     });
   }
@@ -104,10 +114,13 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   }
 
   protected saveCadastro(addNew = false): void {
-    this._service.create(this.formValues).then(({ id }) => {
+    this._service.create(this.formValues).subscribe((response) => {
+      this.openSnackBar();
+      const id = response.data.id;
       if (addNew) {
         this.cadastroFormGroup.reset();
       } else {
+        this.cadastroFormGroup.markAsUntouched();
         this._router.navigate([`../editar/${id}`], { relativeTo: this._route });
       }
     });
@@ -127,5 +140,17 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     });
 
     return ref.afterClosed() as unknown as Observable<boolean>;
+  }
+
+  protected openSnackBar() {
+    const horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    const verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: "Salvo com sucesso!" },
+      duration: 5 * 100,
+      horizontalPosition: horizontalPosition,
+      verticalPosition: verticalPosition,
+    });
   }
 }

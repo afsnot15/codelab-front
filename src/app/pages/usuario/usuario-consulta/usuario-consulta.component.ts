@@ -1,15 +1,7 @@
 import { MatIconModule } from '@angular/material/icon';
-import {
-  Component,
-  Injector
-} from '@angular/core';
-import {
-  FormControl,
-  FormGroup
-} from '@angular/forms';
-import {
-  MatPaginatorModule
-} from '@angular/material/paginator';
+import { Component, Injector } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BaseConsultaComponent } from '../../../shared/classes/base-consulta/base-consulta.component';
@@ -42,7 +34,7 @@ const imports = [
   FormFieldsListComponent,
   ProgressLoadingComponent,
   CommonModule,
-  MatIconModule
+  MatIconModule,
 ];
 
 @Component({
@@ -65,11 +57,11 @@ export class UsuarioConsultaComponent extends BaseConsultaComponent<IUsuario> {
     },
     {
       label: 'Sim',
-      value: 1,
+      value: true,
     },
     {
       label: 'Não',
-      value: 2,
+      value: false,
     },
   ];
 
@@ -113,7 +105,10 @@ export class UsuarioConsultaComponent extends BaseConsultaComponent<IUsuario> {
     admin: new FormControl(0),
   });
 
-  constructor(private _usuarioService: UsuarioService,  protected readonly _injectorUsuario: Injector,) {
+  constructor(
+    private _usuarioService: UsuarioService,
+    private readonly _injectorUsuario: Injector,
+  ) {
     super(_usuarioService, _injectorUsuario);
   }
 }

@@ -44,13 +44,11 @@ export abstract class BaseConsultaComponent<TData> {
 
     this._service
       .findAll(this.page, this.sort, this.filter)
-      .then((response) => {
+      .subscribe((response) => {
         this.dataSource.data = response.data;
-        this.paginatorEl.length = response.count;
+        this.paginatorEl.length = response.count as number;
+        this.loading = false;
       })
-      .finally(() => {
-        setTimeout(() => (this.loading = false), 2000);
-      });
   }
 
   applySort(sort: Sort) {

@@ -51,8 +51,8 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" (dblclick)="editar(row.id)"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" (dblclick)="editar(row.id)"  class="hover"></tr>
     </table>
 
     <mat-paginator
