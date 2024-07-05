@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +29,7 @@ const components = [
 @Component({
   selector: 'cl-form-field',
   standalone: true,
-  imports: [...form, ...components, CommonModule],
+  imports: [...form, ...components],
   templateUrl: './form-field.component.html',
   styleUrl: './form-field.component.scss',
 })
@@ -40,10 +40,7 @@ export class FormFieldComponent {
   get label():string {
     const isRequired = !!this.control?.hasValidator(Validators.required);
 
-    console.log( `${this.field.label} ${isRequired ? '*' : ''}`)
-
     return `${this.field.label} ${isRequired ? '*' : ''}`
-
   }
 
   get control(): AbstractControl | null {

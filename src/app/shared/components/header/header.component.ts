@@ -1,6 +1,6 @@
 import { EHomeRoutes } from './../../enums/routes/home-route.enum';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
@@ -8,7 +8,7 @@ import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
 @Component({
   selector: 'cl-header',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

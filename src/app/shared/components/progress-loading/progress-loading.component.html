@@ -1,8 +1,8 @@
-<mat-progress-bar
-  *ngIf="loading; else loadingPlaceholder"
-  mode="indeterminate"
-></mat-progress-bar>
-
-<ng-template #loadingPlaceholder>
+@if (loading) {
+  <mat-progress-bar
+    mode="indeterminate"
+  ></mat-progress-bar>
+} @else {
   <div class="loading-placeholder"></div>
-</ng-template>
+}
+

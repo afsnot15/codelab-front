@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ interface IMenuItem {
 @Component({
   selector: 'cl-menu',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
