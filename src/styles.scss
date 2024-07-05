@@ -98,9 +98,34 @@ body {
   cursor: pointer;
   color: var(--color-secondary);
   font-size: 20px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.consulta-delete-icon {
+  cursor: pointer;
+  color: var(--color-secondary);
+  font-size: 20px;
+  color: rgba(177, 2, 2, 0.733);
+
+  &:hover {
+    color: var(--color-primary);
+  }
 }
 
 .consulta-actions-container {
   width: 30px;
   text-align: center !important ;
+}
+
+.table-actions {
+  display: flex;
+}
+
+.mat-row-hover {
+  &:hover {
+    background-color: var(--color-gray-50);
+  }
 }

@@ -37,8 +37,6 @@ export abstract class BaseResourceService<TData> {
     const sizeParam = page.pageSize;
     const filterQuery = handleFindAllFilter(filter);
 
-    console.log(`${this.url}/${pageParam}/${sizeParam}/${orderParam}?filter=${filterQuery}`);
-
     return this._http
       .get<
         IResponse<TData[]>
@@ -58,5 +56,9 @@ export abstract class BaseResourceService<TData> {
 
   findOneById(id: number): Observable<IResponse<TData>> {
     return this._http.get<IResponse<TData>>(`${this.url}/${id}`).pipe(take(1));
+  }
+
+  delete(id: number): Observable<IResponse<boolean>> {
+    return this._http.delete<IResponse<boolean>>(`${this.url}/${id}`).pipe(take(1));
   }
 }

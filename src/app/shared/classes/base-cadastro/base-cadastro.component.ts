@@ -56,7 +56,6 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     }
 
     this.idEdit = +id;
-    console.log(this.idEdit);
 
     this._service.findOneById(this.idEdit).subscribe((response) => {
       if (!response) {
@@ -98,24 +97,24 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   }
 
   protected saveEditar(addNew = false): void {
-    this._service.updateById(this.idEdit, this.formValues).subscribe((response) => {
-      this.openSnackBar();
+    this._service.updateById(this.idEdit, this.formValues).subscribe(() => {
       if (addNew) {
         this.cadastroFormGroup.markAsUntouched();
         this.navigateToCadastro();
       } else {
-        this.actionsAfterUpdate(response.data);
+        this.actionsAfterUpdate();
       }
+      this.openSnackBar();
     });
   }
 
-  protected actionsAfterUpdate(response: TData): void {
+  protected actionsAfterUpdate(): void {
     this.cadastroFormGroup.markAsUntouched();
   }
 
   protected saveCadastro(addNew = false): void {
     this._service.create(this.formValues).subscribe((response) => {
-      this.openSnackBar();
+      //this.openSnackBar();
       const id = response.data.id;
       if (addNew) {
         this.cadastroFormGroup.reset();
@@ -127,8 +126,6 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
   }
 
   canDeactivate(): TCanDeactivate {
-    console.log('Chamada action');
-
     if (!this.cadastroFormGroup.touched) return true;
 
     const ref = this._dialog.open(ConfirmDialogComponent, {
