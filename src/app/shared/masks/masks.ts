@@ -4,3 +4,14 @@ export const intMask = {
   padFractionalZeros: false,
   normalizeZeros: true,
 };
+
+export const monetaryMask = {
+  mask: Number,
+  scale: 2,
+  thousandsSeparator: '.',
+  padFractionalZeros: true,
+  normalizeZeros: true,
+  radix: ',',
+  mapToRadix: ['.'],
+  prefix: 'R$ ',
+};

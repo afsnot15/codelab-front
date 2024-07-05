@@ -4,4 +4,5 @@ export enum EApiInfo {
 
 export enum EApiPath {
   USUARIO = 'usuario',
+  PRODUTO = 'produto',
 }

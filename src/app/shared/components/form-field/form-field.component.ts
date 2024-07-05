@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IFormField } from '../../interfaces/form-field.interface';
 import {
   AbstractControl,
+  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
@@ -15,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { controlErrorMessages } from '../../helpers/form-error.helper';
+import { EFieldType } from '../../enums/field-type.enum';
 
 const form = [ReactiveFormsModule, FormsModule];
 const components = [
@@ -37,14 +39,18 @@ export class FormFieldComponent {
   @Input({ required: true }) field!: IFormField;
   @Input({ required: true }) form!: FormGroup;
 
-  get label():string {
+  get label(): string {
     const isRequired = !!this.control?.hasValidator(Validators.required);
 
-    return `${this.field.label} ${isRequired ? '*' : ''}`
+    return `${this.field.label} ${isRequired ? '*' : ''}`;
   }
 
   get control(): AbstractControl | null {
     if (!this.field || !this.form) return null;
+
+    if (this.field.type === EFieldType.StringArray) {
+      this.transformArray();
+    }
 
     return this.form.get(this.field.formControlName);
   }
@@ -53,5 +59,16 @@ export class FormFieldComponent {
     if (!this.control || !this.control.touched) return '';
 
     return controlErrorMessages(this.control);
+  }
+
+  private transformArray(): void {
+    let value = this.form.get(this.field.formControlName)?.value;
+
+    if(!value) return;
+
+    if (!Array.isArray(value)) {
+      value = [String(value)];
+      this.form.get(this.field.formControlName)?.setValue(value);
+    }
   }
 }

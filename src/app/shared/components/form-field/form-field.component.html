@@ -37,6 +37,28 @@
           </mat-checkbox>
         </ng-container>
       }
+
+      @case (4) {
+        <mat-form-field>
+          <input
+            type="number"
+            matInput
+            [placeholder]="field.placeholder"
+            [formControlName]="field.formControlName"
+            />
+        </mat-form-field>
+      }
+
+      @case (5) {
+        <mat-form-field>
+          <input
+            type="number"
+            matInput
+            [placeholder]="field.placeholder"
+            [formControlName]="field.formControlName"
+            />
+        </mat-form-field>
+      }
     }
   </ng-container>
 

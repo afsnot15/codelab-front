@@ -12,4 +12,5 @@ export interface IUsuarioForm {
   nome: FormControl<string | null>;
   email: FormControl<string | null>;
   admin: FormControl<number | null>;
+  ativo: FormControl<boolean | null>;
 }
