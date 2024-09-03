@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { EHomeRoutes } from '../../enums/routes/home-route.enum';
 import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
+import { EPageRoutes } from '../../enums/routes/page-route.enum';
 
 interface IMenuItem {
   label: string;
@@ -24,6 +25,7 @@ export class MenuComponent {
   menuItems: IMenuItem[] = [
     { label: 'Home', icon: 'home', path: EHomeRoutes.ROOT },
     { label: 'Usuário', icon: 'person', path: EUsuarioRoutes.ROOT },
+    { label: 'Produto', icon: 'shopping_cart', path: EPageRoutes.PRODUTO },
   ];
 
   handleNavigation(path: string) {

@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   template: '',
 })
-export abstract class BaseConsultaComponent<TData> {
+export abstract class BaseConsultaComponent<TData> implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginatorEl!: MatPaginator;
 
   private readonly _router!: Router;
@@ -27,6 +27,14 @@ export abstract class BaseConsultaComponent<TData> {
 
   loading = false;
 
+  constructor(
+    private readonly _service: BaseResourceService<TData>,
+    protected _injector: Injector,
+  ) {
+    this._router = this._injector.get(Router);
+    this._route = this._injector.get(ActivatedRoute);
+  }
+
   get filter() {
     return this.filterFormGroup.getRawValue();
   }
@@ -36,7 +44,7 @@ export abstract class BaseConsultaComponent<TData> {
   }
 
   ngAfterViewInit(): void {
-    this.paginatorEl._intl = getPaginatorIntl(this.paginatorEl._intl);
+   this.paginatorEl._intl = getPaginatorIntl(this.paginatorEl._intl);
   }
 
   search() {
@@ -65,11 +73,9 @@ export abstract class BaseConsultaComponent<TData> {
     this._router.navigate([`../editar/${id}`], { relativeTo: this._route });
   }
 
-  constructor(
-    private readonly _service: BaseResourceService<TData>,
-    protected _injector: Injector,
-  ) {
-    this._router = this._injector.get(Router);
-    this._route = this._injector.get(ActivatedRoute);
+  excluir(id:number): void {
+    this._service.delete(id).subscribe(() => {
+      this.search();
+    });
   }
 }

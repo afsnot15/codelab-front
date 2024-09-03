@@ -1,10 +1,14 @@
-import { EFieldType } from "../enums/field-type.enum";
+import { PipeTransform } from '@angular/core';
+import { EFieldType } from '../enums/field-type.enum';
 
 export interface ILabelValue {
   label: string;
   value: number | boolean | string | undefined;
 }
 
+export interface IItemList {
+  value: number | boolean | string | undefined;
+}
 
 export interface IFormField {
   type: EFieldType;
@@ -14,4 +18,5 @@ export interface IFormField {
   placeholder: string;
   options?: ILabelValue[];
   mask?: any;
+  password?: boolean;
 }

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EUsuarioRoutes } from '../../enums/routes/usuario-route.enum';
+import { LoginService } from '../../../pages/login/login.service';
 
 @Component({
   selector: 'cl-header',
@@ -16,10 +17,11 @@ export class HeaderComponent {
   constructor(
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
+    private readonly _loginService: LoginService,
   ) {}
 
   logout(): void {
-    this._router.navigate([EHomeRoutes.ROOT]);
+    this._loginService.logout();
   }
 
   navigateToUsuarioConfiguracao(): void {

@@ -1,5 +1,5 @@
-import { Component, Injector } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Injector, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { BaseCadastroComponent } from '../../../shared/classes/base-cadastro/base-cadastro.component';
@@ -11,9 +11,11 @@ import { FormFieldsListComponent } from '../../../shared/components/form-fields-
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { EFieldType } from '../../../shared/enums/field-type.enum';
 import { EUsuarioRoutes } from '../../../shared/enums/routes/usuario-route.enum';
-import { IFormField } from '../../../shared/interfaces/form-field.interface';
+import { IFormField, ILabelValue } from '../../../shared/interfaces/form-field.interface';
 import { IUsuario } from '../usuario.interface';
 import { UsuarioService } from '../usuario.service';
+import { EPermissoes } from '../../../shared/enums/permissoes/permissoes.enum';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'cl-usuario-cadastro',
@@ -27,17 +29,23 @@ import { UsuarioService } from '../usuario.service';
     AddActionComponent,
     SaveActionComponent,
     FormFieldsListComponent,
+    MatCheckboxModule,
   ],
   templateUrl: './usuario-cadastro.component.html',
   styleUrl: './usuario-cadastro.component.scss',
 })
-export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario> {
+export class UsuarioCadastroComponent
+  extends BaseCadastroComponent<IUsuario>
+  implements OnInit
+{
   constructor(
     private readonly _usuarioService: UsuarioService,
     protected override readonly _injector: Injector,
   ) {
     super(_usuarioService, _injector);
   }
+
+  permissoesEnum = EPermissoes;
 
   cadastroFormGroup = new FormGroup({
     id: new FormControl({ value: null, disabled: true }),
@@ -48,6 +56,10 @@ export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario> {
     ativo: new FormControl(true),
     permissao: new FormControl([]),
   });
+
+  get permissaoFormArray(): FormArray {
+    return this.cadastroFormGroup.get('permissao') as FormArray;
+  }
 
   cadastroFields: IFormField[] = this.getFields();
 
@@ -87,4 +99,26 @@ export class UsuarioCadastroComponent extends BaseCadastroComponent<IUsuario> {
       },
     ];
   }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    const enumArray = Object.keys(this.permissoesEnum);
+    const valuesArray = enumArray.splice(enumArray.length / 2);
+    const keysArray = enumArray.splice(0, enumArray.length);
+
+    valuesArray.forEach((value, index) => {
+      const permissao = {
+        label: keysArray[index] as string,
+        value: value,
+        checked: true
+      };
+
+      const form = new FormGroup({});
+
+      this.permissoes.push(permissao);
+      this.permissaoFormArray.push(form);
+    });
+  }
+
+  permissoes: { label: string; value: string; checked: boolean; }[] = [];
 }

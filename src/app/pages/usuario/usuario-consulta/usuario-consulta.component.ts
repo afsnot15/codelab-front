@@ -103,6 +103,7 @@ export class UsuarioConsultaComponent extends BaseConsultaComponent<IUsuario> {
     nome: new FormControl(null),
     email: new FormControl(null),
     admin: new FormControl(0),
+    ativo: new FormControl(true),
   });
 
   constructor(

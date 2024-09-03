@@ -8,6 +8,7 @@ export function getPaginatorIntl(intl: MatPaginatorIntl) {
     previousPageLabel: 'Página anterior',
     firstPageLabel: 'Primeira página',
     lastPageLabel: 'Última página',
+
     getRangeLabel: (page: number, pageSize: number, length: number) => {
       const from = page * pageSize + 1;
       const to = page * pageSize + pageSize;

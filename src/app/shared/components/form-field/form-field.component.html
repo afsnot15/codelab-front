@@ -1,5 +1,5 @@
 <form [formGroup]="form" class="form-field">
-  @if (field.type !== 2) {
+  @if (![2, 7].includes(field.type)) {
     <span class="label">{{ label }}</span>
   }
 
@@ -8,11 +8,11 @@
       @case (0) {
         <mat-form-field>
           <input
-            type="text"
+            [type]="field.password ? 'password' : 'text'"
             matInput
             [placeholder]="field.placeholder"
             [formControlName]="field.formControlName"
-            />
+          />
         </mat-form-field>
       }
 
@@ -20,9 +20,7 @@
         <mat-form-field>
           <mat-select [formControlName]="field.formControlName">
             @for (option of field.options; track option) {
-              <mat-option
-                [value]="option.value"
-                >
+              <mat-option [value]="option.value">
                 {{ option.label }}
               </mat-option>
             }
@@ -36,6 +34,46 @@
             <span class="field-label"> {{ label }} </span>
           </mat-checkbox>
         </ng-container>
+      }
+
+      @case (4) {
+        <mat-form-field>
+          <input
+            type="number"
+            matInput
+            [placeholder]="field.placeholder"
+            [formControlName]="field.formControlName"
+          />
+        </mat-form-field>
+      }
+
+      @case (5) {
+        <div class="list">
+          <ul class="item-list">
+            @for (item of items; track item; let i = $index) {
+              <li>
+                <span>{{ transformValue(item) }}</span>
+                <div class="actions">
+                  <mat-icon
+                    class="consulta-delete-icon"
+                    aria-label="Editar"
+                    fontIcon="delete"
+                    (click)="removeItem(i)"
+                  ></mat-icon>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+
+      @case (7) {
+        <mat-slide-toggle
+          [formControlName]="field.formControlName"
+          color="primary"
+        >
+          {{ label}}
+        </mat-slide-toggle>
       }
     }
   </ng-container>

@@ -9,9 +9,21 @@
   </ng-container>
 
   <ng-container content>
-      <cl-form-fields-list
-        [form]="cadastroFormGroup"
-        [fields]="cadastroFields"
-      ></cl-form-fields-list>
+    <cl-form-fields-list
+      [form]="cadastroFormGroup"
+      [fields]="cadastroFields"
+    ></cl-form-fields-list>
+
+    <div class="permissoes-container">
+      <h2 class="permissoes-container_title">Permissões</h2>
+
+      <ng-container>
+        @for (permissao of permissoes; track permissao.label) {
+          <mat-checkbox [checked]="permissao.checked">
+          <span class="field-label">{{ permissao.label }}</span>
+          </mat-checkbox>
+        }
+      </ng-container>
+    </div>
   </ng-container>
 </cl-page-layout>
