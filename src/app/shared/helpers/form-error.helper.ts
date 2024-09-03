@@ -9,6 +9,7 @@ const customErrors = (
   minlength: `Deve ser maior ou igual a ${validatorValue['requiredLength']}`,
   maxlength: `Deve ser menor ou igual a ${validatorValue['requiredLength']}`,
   invalidfield: `Campo inválido`,
+  email: 'Email inválido',
 });
 
 export function controlErrorMessages({ errors }: AbstractControl): string {

@@ -5,7 +5,7 @@ export interface IProduto {
   descricao: string;
   precoCusto: number;
   precoVenda: number;
-  codigoBarras: string;
+  codigoBarras?: string[];
   imagem: string;
 }
 
@@ -14,7 +14,7 @@ export interface IProdutoForm {
   descricao: FormControl<string | null>;
   precoCusto: FormControl<string | null>;
   precoVenda: FormControl<number | null>;
-  codigoBarras: FormControl<string | null>;
+  codigoBarras?: FormControl<string[] | null>;
   imagem: FormControl<string | null>;
   ativo: FormControl<boolean | null>;
 }

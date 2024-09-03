@@ -2,11 +2,10 @@ import { Injectable, Injector } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { IResponse } from '../../interfaces/find-all-response.interface';
-import { filterSortPageData } from '../../helpers/table.helper';
 import { HttpClient } from '@angular/common/http';
-import { EApiInfo } from '../../enums/api/api-info';
 import { Observable, take } from 'rxjs';
 import { handleFindAllFilter } from '../../helpers/filter.helper';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +19,7 @@ export abstract class BaseResourceService<TData> {
     path: string,
   ) {
     this._http = this._injector.get(HttpClient);
-    this.url = `${EApiInfo.BASE_URL}${path}`;
+    this.url = `${environment.baseUrl}${path}`;
   }
 
   findAll(

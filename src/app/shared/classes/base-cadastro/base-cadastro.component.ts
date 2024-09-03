@@ -13,10 +13,10 @@ import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dia
 import { Observable } from 'rxjs';
 import {
   MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { ISnackbarData } from '../../interfaces/snackbar-data.interface';
+import { ESnackbarType } from '../../enums/snackbar-type.enum';
 
 @Component({
   template: '',
@@ -58,7 +58,11 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     this.idEdit = +id;
 
     this._service.findOneById(this.idEdit).subscribe((response) => {
-      if (!response) {
+      if (!response.data) {
+        this.openSnackBar({
+          message: 'Registro não encontrado' ,
+          type: ESnackbarType.warning,
+        });
         this.navigateToCadastro();
         return;
       }
@@ -90,6 +94,11 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     this.cadastroFormGroup.markAllAsTouched();
 
     if (this.cadastroFormGroup.invalid) {
+      this.openSnackBar({
+        message: 'Campos obrigatórios não preenchidos!',
+        type: ESnackbarType.warning,
+      });
+
       return;
     }
 
@@ -104,7 +113,10 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
       } else {
         this.actionsAfterUpdate();
       }
-      this.openSnackBar();
+      this.openSnackBar({
+        message: 'Registro atualizado com sucesso',
+        type: ESnackbarType.success,
+      });
     });
   }
 
@@ -114,7 +126,10 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
 
   protected saveCadastro(addNew = false): void {
     this._service.create(this.formValues).subscribe((response) => {
-      //this.openSnackBar();
+      this.openSnackBar({
+        message: 'Registro criado com sucesso',
+        type: ESnackbarType.success,
+      });
       const id = response.data.id;
       if (addNew) {
         this.cadastroFormGroup.reset();
@@ -139,15 +154,15 @@ export abstract class BaseCadastroComponent<TData extends { id: number }>
     return ref.afterClosed() as unknown as Observable<boolean>;
   }
 
-  protected openSnackBar() {
-    const horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-    const verticalPosition: MatSnackBarVerticalPosition = 'top';
-
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      data: { message: "Salvo com sucesso!" },
-      duration: 5 * 100,
-      horizontalPosition: horizontalPosition,
-      verticalPosition: verticalPosition,
-    });
+  protected openSnackBar(data: ISnackbarData, duration = 50000) {
+    this._snackBar.openFromComponent<SnackbarComponent, ISnackbarData>(
+      SnackbarComponent,
+      {
+        duration,
+        data,
+        panelClass: data.type,
+        horizontalPosition: 'end',
+      },
+    );
   }
 }

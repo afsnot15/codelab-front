@@ -1,7 +1,6 @@
 import { Component, Inject, Input, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import {
   MAT_SNACK_BAR_DATA,
   MatSnackBar,
@@ -10,6 +9,7 @@ import {
   MatSnackBarLabel,
   MatSnackBarRef,
 } from '@angular/material/snack-bar'
+import { ISnackbarData } from '../../interfaces/snackbar-data.interface';
 
 @Component({
   selector: 'cl-snackbar',
@@ -19,13 +19,10 @@ import {
   styleUrl: './snackbar.component.scss'
 })
 export class SnackbarComponent {
-  public message: string;
-
-  constructor(@Inject(MAT_SNACK_BAR_DATA) message: any) {
-    this.message = message.message;
-  }
-
-  buttonText = "Close"
+  message = '';
   snackBarRef = inject(MatSnackBarRef);
 
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: ISnackbarData) {
+    this.message = data.message;
+  }
 }

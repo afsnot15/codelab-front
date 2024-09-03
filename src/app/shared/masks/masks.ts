@@ -5,6 +5,13 @@ export const intMask = {
   normalizeZeros: true,
 };
 
+export const ean13Mask = {
+  mask: Number,
+  scale: 0,
+  padFractionalZeros: false,
+  normalizeZeros: true,
+};
+
 export const monetaryMask = {
   mask: Number,
   scale: 2,

@@ -13,6 +13,59 @@
       [form]="cadastroFormGroup"
       [fields]="cadastroFields"
     ></cl-form-fields-list>
-  </ng-container>
 
+    <div class="header-separator">
+      <h1>Código de Barras</h1>
+      <div class="separator"></div>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Código de Barras"
+          name="codigoBarras"
+          [(ngModel)]="codigoBarras"
+        />
+      </mat-form-field>
+
+      <mat-icon
+        class="action-icon"
+        aria-label="Adicionar"
+        fontIcon="add"
+        (click)="addCodigoBarras()"
+      ></mat-icon>
+    </div>
+
+    <cl-form-fields-list
+      [form]="cadastroFormGroup"
+      [fields]="codigoBarrasFields"
+    ></cl-form-fields-list>
+
+    <div class="header-separator">
+      <h1>Imagem</h1>
+      <div class="separator"></div>
+    </div>
+
+    <div class="image-upload-container" [class.image-selected]="imageSrc">
+      <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+
+      @if (imageSrc) {
+        <img
+          #imagePreview
+          [src]="imageSrc"
+          style="max-width: 100%; max-height: 200px"
+        />
+
+        <div class="remove-image-btn" (click)="removeImage()">
+          <mat-icon
+            class="consulta-delete-icon"
+            aria-label="Editar"
+            fontIcon="delete"
+          ></mat-icon>
+        </div>
+      }
+    </div>
+  </ng-container>
 </cl-page-layout>

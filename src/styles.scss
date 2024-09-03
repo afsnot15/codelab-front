@@ -88,6 +88,7 @@ body {
   --color-gray-50: #eceff1;
   --color-gray-600: #546e7a;
   --color-secondary: #5e5e5e;
+  --color-delete: rgba(177, 2, 2, 0.733);
 }
 
 [disabled] {
@@ -108,7 +109,7 @@ body {
   cursor: pointer;
   color: var(--color-secondary);
   font-size: 20px;
-  color: rgba(177, 2, 2, 0.733);
+  color: var(--color-delete);
 
   &:hover {
     color: var(--color-primary);
@@ -127,5 +128,18 @@ body {
 .mat-row-hover {
   &:hover {
     background-color: var(--color-gray-50);
+  }
+}
+
+.action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s all ease;
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
   }
 }

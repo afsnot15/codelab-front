@@ -20,10 +20,11 @@ import { FormatIdPipe } from '../../../shared/pipes/format-id.pipe';
 import { IProduto, IProdutoForm } from '../produto.interface';
 import { ProdutoService } from '../produto.service';
 import { FormatMonetaryPipe } from '../../../shared/pipes/format-monetary.pipe';
+import { FormatEan13Pipe } from '../../../shared/pipes/format-ean13.pipe';
 
 const actions = [BackActionComponent, AddActionComponent];
 const table = [MatTableModule, MatSortModule, MatPaginatorModule];
-const pipes = [BoolToTextPipe, FormatIdPipe, FormatMonetaryPipe];
+const pipes = [BoolToTextPipe, FormatIdPipe, FormatMonetaryPipe, FormatEan13Pipe];
 
 const imports = [
   ...actions,
@@ -52,7 +53,6 @@ export class ProdutoConsultaComponent extends BaseConsultaComponent<IProduto> {
   ) {
     super(_produtoService, _injectorProduto);
   }
-
 
   displayedColumns: string[] = [
     'id',

@@ -4,5 +4,7 @@ export enum EFieldType {
   Checkbox,
   Datepicker,
   Number,
-  StringArray
+  List,
+  File,
+  Slide,
 }
