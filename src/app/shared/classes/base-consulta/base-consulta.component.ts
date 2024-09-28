@@ -53,6 +53,7 @@ export abstract class BaseConsultaComponent<TData> implements OnInit, AfterViewI
     this._service
       .findAll(this.page, this.sort, this.filter)
       .subscribe((response) => {
+        console.log(response);
         this.dataSource.data = response.data;
         this.paginatorEl.length = response.count as number;
         this.loading = false;

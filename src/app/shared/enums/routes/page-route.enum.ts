@@ -3,6 +3,8 @@ export enum EPageRoutes {
   NOT_FOUND = '404',
   HOME = 'home',
   PRODUTO = 'produto',
+  PESSOA = 'pessoa',
+  CONTA_RECEBER = 'conta-receber',
 }
 
 export enum EPathRoutes {

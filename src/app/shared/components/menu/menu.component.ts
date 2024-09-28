@@ -26,6 +26,8 @@ export class MenuComponent {
     { label: 'Home', icon: 'home', path: EHomeRoutes.ROOT },
     { label: 'Usuário', icon: 'person', path: EUsuarioRoutes.ROOT },
     { label: 'Produto', icon: 'shopping_cart', path: EPageRoutes.PRODUTO },
+    { label: 'Pessoa', icon: 'person', path: EPageRoutes.PESSOA },
+    { label: 'Financeiro', icon: 'payment', path: EPageRoutes.CONTA_RECEBER },
   ];
 
   handleNavigation(path: string) {

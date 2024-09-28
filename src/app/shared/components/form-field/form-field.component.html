@@ -36,6 +36,14 @@
         </ng-container>
       }
 
+      @case (3) {
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker"  [formControlName]="field.formControlName"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      }
+
       @case (4) {
         <mat-form-field>
           <input
@@ -72,7 +80,7 @@
           [formControlName]="field.formControlName"
           color="primary"
         >
-          {{ label}}
+          {{ label }}
         </mat-slide-toggle>
       }
     }
